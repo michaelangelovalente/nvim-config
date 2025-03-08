@@ -79,80 +79,56 @@ require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons' }
     }
 
+    -- Java basic utils
+    use {
+        "mfussenegger/nvim-jdtls",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+    }
+
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
-    use('neovim/nvim-lspconfig')
-    use('hrsh7th/cmp-nvim-lsp')
-    use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-path')
-    use('hrsh7th/cmp-cmdline')
-    use('hrsh7th/nvim-cmp')
+    -- use('neovim/nvim-lspconfig')
+    -- use('hrsh7th/cmp-nvim-lsp')
+    -- use('hrsh7th/cmp-buffer')
+    -- use('hrsh7th/cmp-path')
+    -- use('hrsh7th/cmp-cmdline')
+    -- use('hrsh7th/nvim-cmp')
+    -- use('hrsh7th/cmp-nvim-lsp')
 
     -- " For vsnip users.
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
+    use('hrsh7th/cmp-vsnip')
+    use('hrsh7th/vim-vsnip')
 
     -- ThePrimeagen harpoon file navigator
     use('ThePrimeagen/harpoon')
 
-    -- LSP ZERO
-    -- NOTE: to make any of this work you need a language server.
-    -- If you don't know what that is, watch this 5 min video:
-    -- https://www.youtube.com/watch?v=LaS32vctfOY
+    ----- LSP zero
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-    -- Reserve a space in the gutter
-    vim.opt.signcolumn = 'yes'
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lua' },
 
-    -- Add cmp_nvim_lsp capabilities settings to lspconfig
-    -- This should be executed before you configure any language server
-    local lspconfig_defaults = require('lspconfig').util.default_config
-    lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-        'force',
-        lspconfig_defaults.capabilities,
-        require('cmp_nvim_lsp').default_capabilities()
-    )
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    }
 
-    -- This is where you enable features that only work
-    -- if there is a language server active in the file
-    vim.api.nvim_create_autocmd('LspAttach', {
-        desc = 'LSP actions',
-        callback = function(event)
-            local opts = { buffer = event.buf }
-
-            vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-            vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-            vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-            vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-            vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-            vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-            vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-            vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-            vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-            vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-        end,
-    })
-
-    -- You'll find a list of language servers here:
-    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-    -- These are example language servers.
-    require('lspconfig').gleam.setup({})
-    require('lspconfig').ocamllsp.setup({})
-
-    local cmp = require('cmp')
-
-    cmp.setup({
-        sources = {
-            { name = 'nvim_lsp' },
-        },
-        snippet = {
-            expand = function(args)
-                -- You need Neovim v0.10 to use vim.snippet
-                vim.snippet.expand(args.body)
-            end,
-        },
-        mapping = cmp.mapping.preset.insert({}),
-    })
+    ------
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require('packer').sync()
