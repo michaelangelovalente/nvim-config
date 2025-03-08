@@ -29,6 +29,7 @@ require('packer').startup(function(use)
   use 'folke/tokyonight.nvim'
 
   -- Telescope (fuzzy finder)
+  use ('nvim-lua/plenary.nvim')
   use {
    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -82,7 +83,6 @@ require('packer').startup(function(use)
 
   -- ThePrimeagen harpoon file navigator
   use ('ThePrimeagen/harpoon')
-  use ('nvim-lua/plenary.nvim')
   use('mbbill/undotree')
 
   -- Automatically set up configuration after cloning packer.nvim
