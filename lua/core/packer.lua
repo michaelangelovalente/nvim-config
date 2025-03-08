@@ -46,7 +46,7 @@ require('packer').startup(function(use)
     -- LSP Configuration
     use {
         'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',       -- Package manager for LSP servers
+        'williamboman/mason.nvim',           -- Package manager for LSP servers
         'williamboman/mason-lspconfig.nvim', -- Bridge between mason and lspconfig
     }
 
@@ -81,6 +81,17 @@ require('packer').startup(function(use)
 
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+
+    use('neovim/nvim-lspconfig')
+    use('hrsh7th/cmp-nvim-lsp')
+    use('hrsh7th/cmp-buffer')
+    use('hrsh7th/cmp-path')
+    use('hrsh7th/cmp-cmdline')
+    use('hrsh7th/nvim-cmp')
+
+    -- " For vsnip users.
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
 
     -- ThePrimeagen harpoon file navigator
     use('ThePrimeagen/harpoon')
