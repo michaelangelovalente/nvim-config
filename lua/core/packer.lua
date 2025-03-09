@@ -80,14 +80,25 @@ require('packer').startup(function(use)
     }
 
     -- Java basic utils
-    use {
-        "mfussenegger/nvim-jdtls",
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
-    }
+    use("mfussenegger/nvim-jdtls")
 
+    ----------------------------
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+
+    -- Window maximizer
+    use('szw/vim-maximizer')
+
+    -- Zen mode
+    use {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup({
+                -- Configure as needed
+            })
+        end
+    }
+
 
     -- use('neovim/nvim-lspconfig')
     -- use('hrsh7th/cmp-nvim-lsp')

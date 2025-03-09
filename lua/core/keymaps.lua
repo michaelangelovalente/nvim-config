@@ -16,3 +16,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 vim.keymap.set("n", "<leader>tb", ":botright 20split | terminal<CR>", {noremap = true} )
+
+-- Maximizer toggl
+vim.keymap.set("n", "<leader>mx", ":MaximizerToggle<CR>", { noremap = true })
+
+-- Zenmode
+vim.keymap.set("n", "<leader>zm", ":Zenmode<CR>", { noremap = true, silent = true })
