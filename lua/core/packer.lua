@@ -99,7 +99,18 @@ require('packer').startup(function(use)
         end
     }
 
+    -- Tabs enhanced ( either use barbar or bufferline)
+    -- Barbar
+    use {
+        'nvim-tree/nvim-web-devicons', -- " OPTIONAL: for file icons
+        'romgrk/barbar.nvim'
+    }
 
+    -- Bufferline
+    -- use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+
+
+    --- TODO: delete old lsp???
     -- use('neovim/nvim-lspconfig')
     -- use('hrsh7th/cmp-nvim-lsp')
     -- use('hrsh7th/cmp-buffer')
@@ -111,6 +122,17 @@ require('packer').startup(function(use)
     -- " For vsnip users.
     use('hrsh7th/cmp-vsnip')
     use('hrsh7th/vim-vsnip')
+
+    -- Icon Support
+    use {
+        'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('nvim-web-devicons').setup({
+                -- Enable globally
+                default = true,
+            })
+        end
+    }
 
     -- ThePrimeagen harpoon file navigator
     use('ThePrimeagen/harpoon')

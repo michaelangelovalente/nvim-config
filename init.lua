@@ -9,6 +9,7 @@
 
 print("HELLOO FROM OUTER INIT LUA")
 require("core")
+require("bufferline").setup{}
 
 vim.cmd[[
   "
@@ -56,6 +57,9 @@ vim.opt.modifiable = true            -- Set modifiable to true
 -- Set leader key to space
 vim.g.mapleader = " "
 
+-- Nerd font
+vim.g.have_nerd_font = true
+
 -- Keymaps
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -91,7 +95,9 @@ vim.cmd[[colorscheme tokyonight]]
 local telescope = require('telescope')
 telescope.setup{
   defaults = {
-    file_ignore_patterns = { "node_modules", ".git/" }
+    file_ignore_patterns = { "node_modules", ".git/" },
+    prompt_prefix = " ",
+    selection_caret = " ",
   }
 }
 
@@ -254,6 +260,9 @@ require('lualine').setup {
     theme = 'tokyonight',
     component_separators = { left = '|', right = '|'},
     section_separators = { left = '', right = ''},
+    icons_enabled = true,
+    -- component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
   },
   sections = {
     lualine_a = {'mode'},
@@ -279,6 +288,14 @@ require('nvim-tree').setup {
   },
   renderer = {
     group_empty = true,
+    icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+    },
   },
   filters = {
     dotfiles = true,
