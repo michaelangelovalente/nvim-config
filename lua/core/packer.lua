@@ -161,6 +161,42 @@ require('packer').startup(function(use)
         }
     }
 
+    --- Code formatter
+    use {
+        'stevearc/conform.nvim',
+        config = function()
+            require('conform').setup({
+                formatters_by_ft = {
+                    sh = { 'shfmt' },
+                    bash = { 'shfmt' },
+                },
+                -- Format on save (optional)
+                format_on_save = {
+                    -- Enable or disable format on save globally
+                    lsp_fallback = true,
+                    timeout_ms = 500,
+                },
+                -- Customize shfmt if needed
+                formatters = {
+                    shfmt = {
+                        prepend_args = { "-i", "2", "-ci", "-s" } -- 2 space indentation, indent case, simplify code
+                    }
+                }
+            })
+        end
+    }
+
+    --- Markdown
+    use({
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+        -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+        -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    })
     ------
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then

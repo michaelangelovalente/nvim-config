@@ -1,6 +1,16 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+-- close tabs and remove from buffer
+vim.api.nvim_create_autocmd('WinClosed', {
+  callback = function(tbl)
+    if tbl.args ~= nil then
+      vim.api.nvim_command('BufferClose ' .. tbl.args)
+    end
+  end,
+  group = vim.api.nvim_create_augroup('barbar_close_buf', {})
+})
+
 -- Move to previous/next
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
@@ -42,7 +52,7 @@ map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 --                 :BufferCloseBuffersRight
 
 -- Magic buffer-picking mode
-map('n', '<C-p>',   '<Cmd>BufferPick<CR>', opts)
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 map('n', '<C-s-p>', '<Cmd>BufferPickDelete<CR>', opts)
 
 -- Sort automatically by...

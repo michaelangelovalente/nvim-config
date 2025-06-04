@@ -10,8 +10,8 @@ lsp.ensure_installed({
 })
 
 lsp.on_attach(function(client, bufnr)
-        -- print("help")
-    local opts = {buffer = bufnr, remap = false}
+    -- print("help")
+    local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -23,7 +23,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-
 end)
 
 -- LSP ZERO
@@ -62,6 +61,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     end,
 })
+
+-- bash shell check
+require('lspconfig').bashls.setup {
+    -- Optional configurations
+    settings = {
+        bashIde = {
+            -- ShellCheck is integrated with bash-language-server
+            shellcheckPath = "shellcheck",
+            enableShellcheck = true,
+        }
+    }
+}
+
 
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md

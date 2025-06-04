@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/panda/.cache/nvim/packer_hererocks/2.1.1736781742/share/lua/5.1/?.lua;/home/panda/.cache/nvim/packer_hererocks/2.1.1736781742/share/lua/5.1/?/init.lua;/home/panda/.cache/nvim/packer_hererocks/2.1.1736781742/lib/luarocks/rocks-5.1/?.lua;/home/panda/.cache/nvim/packer_hererocks/2.1.1736781742/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/panda/.cache/nvim/packer_hererocks/2.1.1736781742/lib/lua/5.1/?.so"
+local package_path_str = "/home/panda/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?.lua;/home/panda/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?/init.lua;/home/panda/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?.lua;/home/panda/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/panda/.cache/nvim/packer_hererocks/2.1.1741730670/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -119,6 +119,12 @@ _G.packer_plugins = {
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["conform.nvim"] = {
+    config = { "\27LJ\2\n”\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\15\0005\4\r\0005\5\f\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\15formatters\nshfmt\1\0\1\nshfmt\0\17prepend_args\1\0\1\17prepend_args\0\1\5\0\0\a-i\0062\b-ci\a-s\19format_on_save\1\0\2\17lsp_fallback\2\15timeout_ms\3Ù\3\21formatters_by_ft\1\0\3\15formatters\0\19format_on_save\0\21formatters_by_ft\0\tbash\1\2\0\0\nshfmt\ash\1\0\2\ash\0\tbash\0\1\2\0\0\nshfmt\nsetup\fconform\frequire\0" },
+    loaded = true,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/start/conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -153,6 +159,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mini.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/opt/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -204,6 +216,14 @@ _G.packer_plugins = {
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["render-markdown.nvim"] = {
+    config = { "\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/opt/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -247,6 +267,19 @@ time([[Defining packer_plugins]], false)
 time([[Config for zen-mode.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
 time([[Config for zen-mode.nvim]], false)
+-- Config for: conform.nvim
+time([[Config for conform.nvim]], true)
+try_loadstring("\27LJ\2\n”\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\15\0005\4\r\0005\5\f\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\15formatters\nshfmt\1\0\1\nshfmt\0\17prepend_args\1\0\1\17prepend_args\0\1\5\0\0\a-i\0062\b-ci\a-s\19format_on_save\1\0\2\17lsp_fallback\2\15timeout_ms\3Ù\3\21formatters_by_ft\1\0\3\15formatters\0\19format_on_save\0\21formatters_by_ft\0\tbash\1\2\0\0\nshfmt\ash\1\0\2\ash\0\tbash\0\1\2\0\0\nshfmt\nsetup\fconform\frequire\0", "config", "conform.nvim")
+time([[Config for conform.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd render-markdown.nvim ]]
+
+-- Config for: render-markdown.nvim
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
+
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
