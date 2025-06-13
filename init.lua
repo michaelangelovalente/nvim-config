@@ -18,6 +18,17 @@ vim.cmd [[
    set tabstop=3
    set expandtab
 
+
+    set clipboard+=unnamed
+    set showmode
+    set showcmd
+    set visualbell
+    set ignorecase
+    set smartcase
+    set incsearch
+    set hlsearch
+
+
 ]]
 -- vim.cmd[[
 --  "
