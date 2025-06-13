@@ -137,7 +137,7 @@ keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 -- LSP configuration
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ts_ls", "bashls" },
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "bashls", "gopls" },
 })
 
 local lspconfig = require('lspconfig')
@@ -159,6 +159,24 @@ lspconfig.pyright.setup {}
 
 -- TypeScript language server
 lspconfig.ts_ls.setup {}
+
+-- Go language server
+lspconfig.gopls.setup {
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+                shadow = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+            usePlaceholders = true,
+            completionDocumentation = true,
+            linksInHover = true,
+        },
+    },
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+}
 
 -- Global mappings for LSP
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

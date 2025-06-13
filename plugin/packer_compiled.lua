@@ -120,7 +120,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["conform.nvim"] = {
-    config = { "\27LJ\2\n”\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\15\0005\4\r\0005\5\f\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\15formatters\nshfmt\1\0\1\nshfmt\0\17prepend_args\1\0\1\17prepend_args\0\1\5\0\0\a-i\0062\b-ci\a-s\19format_on_save\1\0\2\17lsp_fallback\2\15timeout_ms\3Ù\3\21formatters_by_ft\1\0\3\15formatters\0\19format_on_save\0\21formatters_by_ft\0\tbash\1\2\0\0\nshfmt\ash\1\0\2\ash\0\tbash\0\1\2\0\0\nshfmt\nsetup\fconform\frequire\0" },
+    config = { "\27LJ\2\n”\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\15\0005\4\r\0005\5\f\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\15formatters\nshfmt\1\0\1\nshfmt\0\17prepend_args\1\0\1\17prepend_args\0\1\5\0\0\a-i\0062\b-ci\a-s\19format_on_save\1\0\2\15timeout_ms\3Ù\3\17lsp_fallback\2\21formatters_by_ft\1\0\3\21formatters_by_ft\0\19format_on_save\0\15formatters\0\tbash\1\2\0\0\nshfmt\ash\1\0\2\tbash\0\ash\0\1\2\0\0\nshfmt\nsetup\fconform\frequire\0" },
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/conform.nvim",
     url = "https://github.com/stevearc/conform.nvim"
@@ -134,6 +134,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["go.nvim"] = {
+    config = { "\27LJ\2\n´\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\20lsp_inlay_hints\1\0\5\14dap_debug\2\16lsp_keymaps\1\28lsp_document_formatting\2\20lsp_inlay_hints\0\18dap_debug_gui\2\1\0\1\venable\2\nsetup\ago\frequire\0" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/opt/go.nvim",
+    url = "https://github.com/ray-x/go.nvim"
+  },
+  ["guihua.lua"] = {
+    loaded = true,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/start/guihua.lua",
+    url = "https://github.com/ray-x/guihua.lua"
   },
   harpoon = {
     loaded = true,
@@ -155,6 +168,11 @@ _G.packer_plugins = {
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
+  ["mason-tool-installer.nvim"] = {
+    loaded = true,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/start/mason-tool-installer.nvim",
+    url = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
+  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/mason.nvim",
@@ -175,6 +193,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-go"] = {
+    loaded = true,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
+    url = "https://github.com/leoluz/nvim-dap-go"
   },
   ["nvim-jdtls"] = {
     loaded = true,
@@ -244,6 +272,13 @@ _G.packer_plugins = {
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-go"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/panda/.local/share/nvim/site/pack/packer/opt/vim-go",
+    url = "https://github.com/fatih/vim-go"
+  },
   ["vim-maximizer"] = {
     loaded = true,
     path = "/home/panda/.local/share/nvim/site/pack/packer/start/vim-maximizer",
@@ -265,7 +300,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: conform.nvim
 time([[Config for conform.nvim]], true)
-try_loadstring("\27LJ\2\n”\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\15\0005\4\r\0005\5\f\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\15formatters\nshfmt\1\0\1\nshfmt\0\17prepend_args\1\0\1\17prepend_args\0\1\5\0\0\a-i\0062\b-ci\a-s\19format_on_save\1\0\2\17lsp_fallback\2\15timeout_ms\3Ù\3\21formatters_by_ft\1\0\3\15formatters\0\19format_on_save\0\21formatters_by_ft\0\tbash\1\2\0\0\nshfmt\ash\1\0\2\ash\0\tbash\0\1\2\0\0\nshfmt\nsetup\fconform\frequire\0", "config", "conform.nvim")
+try_loadstring("\27LJ\2\n”\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\15\0005\4\r\0005\5\f\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\15formatters\nshfmt\1\0\1\nshfmt\0\17prepend_args\1\0\1\17prepend_args\0\1\5\0\0\a-i\0062\b-ci\a-s\19format_on_save\1\0\2\15timeout_ms\3Ù\3\17lsp_fallback\2\21formatters_by_ft\1\0\3\21formatters_by_ft\0\19format_on_save\0\15formatters\0\tbash\1\2\0\0\nshfmt\ash\1\0\2\tbash\0\ash\0\1\2\0\0\nshfmt\nsetup\fconform\frequire\0", "config", "conform.nvim")
 time([[Config for conform.nvim]], false)
 -- Config for: zen-mode.nvim
 time([[Config for zen-mode.nvim]], true)
@@ -280,6 +315,22 @@ vim.cmd [[ packadd render-markdown.nvim ]]
 try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
 
 time([[Sequenced loading]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType gomod ++once lua require("packer.load")({'go.nvim'}, { ft = "gomod" }, _G.packer_plugins)]]
+vim.cmd [[au FileType go ++once lua require("packer.load")({'go.nvim', 'vim-go'}, { ft = "go" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /home/panda/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/filetype.vim]], true)
+vim.cmd [[source /home/panda/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/filetype.vim]]
+time([[Sourcing ftdetect script at: /home/panda/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/filetype.vim]], false)
+time([[Sourcing ftdetect script at: /home/panda/.local/share/nvim/site/pack/packer/opt/vim-go/ftdetect/gofiletype.vim]], true)
+vim.cmd [[source /home/panda/.local/share/nvim/site/pack/packer/opt/vim-go/ftdetect/gofiletype.vim]]
+time([[Sourcing ftdetect script at: /home/panda/.local/share/nvim/site/pack/packer/opt/vim-go/ftdetect/gofiletype.vim]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -197,6 +197,69 @@ require('packer').startup(function(use)
             require('render-markdown').setup({})
         end,
     })
+
+    --- Go Development
+    -- Go plugin for Vim/Neovim with comprehensive tooling
+    use {
+        'fatih/vim-go',
+        run = ':GoUpdateBinaries',
+        ft = {'go'}
+    }
+    
+    -- Mason Tool Installer for managing Go-related tools
+    use {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        requires = {'williamboman/mason.nvim'}
+    }
+    
+    -- Debug Adapter for Go
+    use {
+        'leoluz/nvim-dap-go',
+        requires = {'mfussenegger/nvim-dap'},
+    }
+    
+    -- Go documentation access
+    use {'ray-x/go.nvim',
+        requires = {'ray-x/guihua.lua'},
+        config = function() 
+            require('go').setup({
+                lsp_inlay_hints = {
+                    enable = true,
+                },
+                lsp_document_formatting = true,
+                lsp_keymaps = false, -- We'll use our own keymaps
+                dap_debug = true,
+                dap_debug_gui = true,
+            })
+        end,
+        ft = {'go', 'gomod'},
+    }
+    
+    -- IdeaVim-like functionality
+    -- Surround plugin (equivalent to 'set surround' in IdeaVim)
+    use {
+        'kylechui/nvim-surround',
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    }
+    
+    -- Highlighted yank (equivalent to 'set highlightedyank' in IdeaVim)
+    use {
+        'machakann/vim-highlightedyank',
+    }
+    
+    -- Sneak plugin (equivalent to 'set sneak' in IdeaVim)
+    use {
+        'justinmk/vim-sneak',
+        config = function()
+            vim.g['sneak#label'] = 1  -- Label mode for quick navigation
+        end
+    }
+    
     ------
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
