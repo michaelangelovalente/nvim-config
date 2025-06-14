@@ -123,16 +123,16 @@ keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 
 -- Treesitter configuration
--- require('nvim-treesitter.configs').setup {
---   ensure_installed = { "lua", "vim", "javascript", "typescript", "python", "bash", "markdown" },
---   sync_install = false,
---   highlight = {
---     enable = true,
---   },
---   indent = {
---     enable = true,
---   },
--- }
+require('nvim-treesitter.configs').setup {
+    ensure_installed = { "lua", "vim", "javascript", "typescript", "python", "bash", "markdown", "go" },
+    sync_install = false,
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+}
 
 -- LSP configuration
 require("mason").setup()
@@ -366,4 +366,44 @@ autocmd('BufReadPost', {
 autocmd('BufWritePost', {
     pattern = 'init.lua',
     command = 'source <afile> | PackerCompile',
+})
+
+-- Custom Go configuration
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "go",
+    callback = function()
+        -- Go specific keymaps
+        local bufopt = { noremap = true, silent = true, buffer = true }
+
+        -- Documentation keymaps
+        keymap("n", "<leader>gd", "<cmd>lua require('go.doc').open_doc()<CR>", bufopt)
+        keymap("n", "<leader>gD", "<cmd>lua require('go.doc').open_doc_browser()<CR>", bufopt)
+
+        -- godoc.nvim keybindings - using the proper GoDoc command
+        keymap("n", "<leader>gP", "<cmd>GoDoc<CR>", bufopt)        -- Open godoc with default view
+        keymap("n", "<leader>gp", "<cmd>GoDoc split<CR>", bufopt)  -- Open in split
+        keymap("n", "<leader>gv", "<cmd>GoDoc vsplit<CR>", bufopt) -- Open in vertical split
+        keymap("n", "<leader>gb", "<cmd>GoDoc tab<CR>", bufopt)    -- Open in new tab
+
+        -- Go LSP keymaps
+        keymap("n", "<leader>gi", "<cmd>lua require('go.implement').impl()<CR>", bufopt)
+        keymap("n", "<leader>ge", "<cmd>GoIfErr<CR>", bufopt)
+        keymap("n", "<leader>gT", "<cmd>GoTest<CR>", bufopt)
+        keymap("n", "<leader>gt", "<cmd>GoTestFunc<CR>", bufopt)
+
+        -- Use goimports on save (instead of gofmt)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.go",
+            callback = function()
+                require('go.format').goimport()
+            end,
+            group = vim.api.nvim_create_augroup("GoFormat", {})
+        })
+
+        -- Set tab width to 8 for Go files (Go standard)
+        vim.bo.tabstop = 8
+        vim.bo.softtabstop = 8
+        vim.bo.shiftwidth = 8
+        vim.bo.expandtab = false
+    end,
 })

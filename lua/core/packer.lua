@@ -203,25 +203,25 @@ require('packer').startup(function(use)
     use {
         'fatih/vim-go',
         run = ':GoUpdateBinaries',
-        ft = {'go'}
+        ft = { 'go' }
     }
-    
+
     -- Mason Tool Installer for managing Go-related tools
     use {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
-        requires = {'williamboman/mason.nvim'}
+        requires = { 'williamboman/mason.nvim' }
     }
-    
+
     -- Debug Adapter for Go
     use {
         'leoluz/nvim-dap-go',
-        requires = {'mfussenegger/nvim-dap'},
+        requires = { 'mfussenegger/nvim-dap' },
     }
-    
+
     -- Go documentation access
-    use {'ray-x/go.nvim',
-        requires = {'ray-x/guihua.lua'},
-        config = function() 
+    use { 'ray-x/go.nvim',
+        requires = { 'ray-x/guihua.lua' },
+        config = function()
             require('go').setup({
                 lsp_inlay_hints = {
                     enable = true,
@@ -232,9 +232,9 @@ require('packer').startup(function(use)
                 dap_debug_gui = true,
             })
         end,
-        ft = {'go', 'gomod'},
+        ft = { 'go', 'gomod' },
     }
-    
+
     -- IdeaVim-like functionality
     -- Surround plugin (equivalent to 'set surround' in IdeaVim)
     use {
@@ -246,20 +246,45 @@ require('packer').startup(function(use)
             })
         end
     }
-    
+
     -- Highlighted yank (equivalent to 'set highlightedyank' in IdeaVim)
     use {
         'machakann/vim-highlightedyank',
     }
-    
+
     -- Sneak plugin (equivalent to 'set sneak' in IdeaVim)
     use {
         'justinmk/vim-sneak',
         config = function()
-            vim.g['sneak#label'] = 1  -- Label mode for quick navigation
+            vim.g['sneak#label'] = 1 -- Label mode for quick navigation
         end
     }
-    
+
+    -- Go Documentation plugin
+    use {
+        'fredrikaverpil/godoc.nvim',
+        requires = {
+            { 'nvim-telescope/telescope.nvim' },                         -- optional
+            { 'nvim-treesitter/nvim-treesitter' }                        -- required
+        },
+        ft = { 'go' },                                                   -- Only load for Go files
+        run = "go install github.com/lotusirous/gostdsym/stdsym@latest", -- Install required Go tool
+        config = function()
+            require('godoc').setup({
+                -- Force floating window by default
+                default_mode = "float",  -- use "float" for floating window
+                float_opts = {
+                    relative = "editor", -- Position relative to editor
+                    border = "rounded",  -- Rounded borders for nicer appearance
+                    width = 0.8,         -- 80% of editor width
+                    height = 0.7,        -- 70% of editor height
+                    row = 0.15,          -- Position from the top
+                    col = 0.1            -- Position from the left
+                }
+            })
+        end
+    }
+
     ------
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
