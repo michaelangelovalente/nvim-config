@@ -33,6 +33,9 @@ require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    -- Telescope extensions
+    use { 'nvim-telescope/telescope-file-browser.nvim' }
+
     -- Treesitter (syntax highlighting)
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -283,6 +286,13 @@ require('packer').startup(function(use)
                 }
             })
         end
+    }
+
+
+    --- Telescope file browser
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
 
     ------

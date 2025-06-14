@@ -108,19 +108,89 @@ vim.cmd [[colorscheme tokyonight]]
 
 -- Telescope configuration
 local telescope = require('telescope')
+-- telescope.setup {
+--     defaults = {
+--         file_ignore_patterns = { "node_modules", ".git/" },
+--         prompt_prefix = " ",
+--         selection_caret = " ",
+--     }
+-- }
+-- telescope.setup {
+--     defaults = {
+--         file_ignore_patterns = { "node_modules", ".git/" },
+--         prompt_prefix = " ",
+--         selection_caret = " ",
+--         theme = "dropdown",
+--         -- theme = "center",
+--         sorting_strategy = "ascending",
+--         layout_config = {
+--             horizontal = {
+--                 prompt_position = "top",
+--                 preview_width = 0.50,
+--                 results_width = 0.8,
+--             },
+--             vertical = {
+--                 mirror = true,
+--             },
+--             width = 0.87,
+--             height = 0.80,
+--             preview_cutoff = 120,
+--         },
+--         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+--         path_display = { "truncate" },
+--     },
+--     extensions = {
+--         file_browser = {
+--             -- disables netrw and uses telescope-file-browser instead
+--             hijack_netrw = true,
+--             mappings = {
+--                 ["i"] = {
+--                     -- your custom insert mode mappings
+--                 },
+--                 ["n"] = {
+--                     -- your custom normal mode mappings
+--                 },
+--             },
+--             -- Floating window configuration
+--             theme = "dropdown",
+--             layout_config = {
+--                 width = 0.85,
+--                 height = 0.8,
+--             },
+--         },
+--     },
+-- }
+--
 telescope.setup {
     defaults = {
-        file_ignore_patterns = { "node_modules", ".git/" },
-        prompt_prefix = " ",
-        selection_caret = " ",
+        theme = "center",
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
+        -- layout_config = { prompt_position = "top" },
+        layout_config = {
+            horizontal = {
+                prompt_position = "top",
+                preview_width = 0.3,
+            },
+        },
+        border = true
     }
 }
+-- Load the file_browser extension
+-- telescope.load_extension("file_browser")
+
+require("telescope").load_extension "file_browser"
+
 
 -- Telescope keymaps
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
+
+-- File browser keymaps
+keymap("n", "<leader>fe", "<cmd>Telescope file_browser<CR>", opts)
+keymap("n", "<leader>fp", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 
 -- Treesitter configuration
 require('nvim-treesitter.configs').setup {
