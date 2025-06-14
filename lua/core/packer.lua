@@ -288,7 +288,12 @@ require('packer').startup(function(use)
             })
         end
     }
-
+    
+    -- Java Language Support
+    use {
+        'mfussenegger/nvim-jdtls',
+        ft = { 'java' }  -- Only load for Java files
+    }
 
     --- Telescope file browser
     use {

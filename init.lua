@@ -195,7 +195,7 @@ keymap("n", "<leader>fp", "<cmd>Telescope file_browser path=%:p:h select_buffer=
 
 -- Treesitter configuration
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { "lua", "vim", "javascript", "typescript", "python", "bash", "markdown", "go" },
+    ensure_installed = { "lua", "vim", "javascript", "typescript", "python", "bash", "markdown", "go", "java" },
     sync_install = false,
     highlight = {
         enable = true,
@@ -208,7 +208,7 @@ require('nvim-treesitter.configs').setup {
 -- LSP configuration
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ts_ls", "bashls", "gopls" },
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "bashls", "gopls", "jdtls" },
 })
 
 local lspconfig = require('lspconfig')
@@ -248,6 +248,9 @@ lspconfig.gopls.setup {
     },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
+
+-- Java language server
+lspconfig.jdtls.setup {}
 
 -- Global mappings for LSP
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
