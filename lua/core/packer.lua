@@ -24,7 +24,8 @@ require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Colorscheme
-    use 'folke/tokyonight.nvim'
+    -- use 'folke/tokyonight.nvim'
+    use 'rmehri01/onenord.nvim'
 
     -- Telescope (fuzzy finder)
     use('nvim-lua/plenary.nvim')

@@ -104,8 +104,9 @@ keymap("v", "<", "<gv", opts)              -- Stay in indent mode
 keymap("v", ">", ">gv", opts)              -- Stay in indent mode
 
 -- Colorscheme configuration
-vim.cmd [[colorscheme tokyonight]]
-
+-- vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme onenord]]
+require('onenord').setup()
 -- Telescope configuration
 local telescope = require('telescope')
 -- telescope.setup {
@@ -360,7 +361,8 @@ cmp.setup.cmdline(':', {
 -- LuaLine configuration
 require('lualine').setup {
     options = {
-        theme = 'tokyonight',
+        -- theme = 'tokyonight',
+        theme = 'onenord',
         component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = '' },
         icons_enabled = true,
@@ -407,6 +409,11 @@ require('nvim-tree').setup {
 
 -- NvimTree keymap
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+vim.keymap.set('n', '<leader>\\', '<cmd>NvimTreeFindFile<CR>', {
+    desc = 'Find current file in NvimTree',
+    noremap = true,
+    silent = true,
+})
 
 -- Custom autocommands
 local augroup = vim.api.nvim_create_augroup
@@ -469,6 +476,7 @@ vim.api.nvim_create_autocmd("FileType", {
             end,
             group = vim.api.nvim_create_augroup("GoFormat", {})
         })
+
 
         -- Set tab width to 8 for Go files (Go standard)
         vim.bo.tabstop = 8
