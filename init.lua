@@ -252,8 +252,8 @@ lspconfig.gopls.setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
 
--- Java language server
-lspconfig.jdtls.setup {}
+-- Java language server (commented out because we use the dedicated config in after/plugin/jdtls.lua)
+-- lspconfig.jdtls.setup {}
 
 -- Global mappings for LSP
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
