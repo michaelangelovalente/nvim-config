@@ -28,13 +28,21 @@ local bundles = {}
 -- Include java-debug if installed
 local java_debug_path = home .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server"
 if vim.fn.isdirectory(java_debug_path) == 1 then
-    vim.list_extend(bundles, vim.split(vim.fn.glob(java_debug_path .. "/com.microsoft.java.debug.plugin-*.jar"), "\n"))
+  local debug_glob = java_debug_path .. "/com.microsoft.java.debug.plugin-*.jar"
+  local debug_bundles = vim.split(vim.fn.glob(debug_glob), "\n")
+  if #debug_bundles > 0 then -- Only add if we found something
+    vim.list_extend(bundles, debug_bundles)
+  end
 end
 
 -- Include java-test if installed
 local java_test_path = home .. "/.local/share/nvim/mason/packages/java-test/extension/server"
 if vim.fn.isdirectory(java_test_path) == 1 then
-    vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/*.jar"), "\n"))
+  local test_glob = java_test_path .. "/*.jar"
+  local test_bundles = vim.split(vim.fn.glob(test_glob), "\n")
+  if #test_bundles > 0 then -- Only add if we found something
+    vim.list_extend(bundles, test_bundles)
+  end
 end
 
 -- LSP settings
@@ -44,6 +52,19 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 -- Improve completion experience
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+-- Initialize init_options with or without bundles
+local init_options
+if #bundles > 0 then
+  init_options = {
+    bundles = bundles,
+    extendedClientCapabilities = extendedClientCapabilities,
+  }
+else
+  init_options = {
+    extendedClientCapabilities = extendedClientCapabilities,
+  }
+end
 
 -- Setup JDTLS
 local config = {
@@ -130,10 +151,7 @@ local config = {
             },
         },
     },
-    init_options = {
-        bundles = bundles,
-        extendedClientCapabilities = extendedClientCapabilities,
-    },
+    init_options = init_options,
     capabilities = capabilities,
     flags = {
         allow_incremental_sync = true,

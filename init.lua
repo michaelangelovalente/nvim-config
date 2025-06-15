@@ -65,6 +65,9 @@ vim.opt.colorcolumn = "80"                             -- Show column at 80 char
 
 vim.opt.modifiable = true                              -- Set modifiable to true
 
+-- Disable spell checking globally
+vim.opt.spell = false
+
 -- Set leader key to space
 vim.g.mapleader = " "
 
